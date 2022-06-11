@@ -1,5 +1,31 @@
+# Just in case
+.jic/
+
+# Backup files
+*.bak
+*~
+
+# Log files
+*.log
+
 # Prerequisites
 *.d
+
+# VS Code files
+.vscode/
+
+# VS Program Database files
+*.pdb
+
+# Generated Map files (debugging)
+*.map
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Assembly files
+*.s
 
 # Compiled Object files
 *.slo
@@ -7,18 +33,10 @@
 *.o
 *.obj
 
-# Precompiled Headers
-*.gch
-*.pch
-
 # Compiled Dynamic libraries
 *.so
 *.dylib
 *.dll
-
-# Fortran module files
-*.mod
-*.smod
 
 # Compiled Static libraries
 *.lai
