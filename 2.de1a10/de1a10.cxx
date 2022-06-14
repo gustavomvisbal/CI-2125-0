@@ -10,7 +10,8 @@
 int main()
 {
   int i = 1;
-  while (i <= 10) {
+  const int N=10;
+  while (i <= N) {
     fprintf(stdout, "Numero: %d\n", i);
     i = i + 1;
   }
