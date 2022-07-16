@@ -51,7 +51,10 @@ static double varp_sdf(int n, const double x[]) {
   double average = mean(n, x);
   // calcular la suma de los cuadrados de las desviaciones y dividir por N
   // result = sum [ i = 0 .. , (x[i] - average)^2 ] / N
-  double result = 0.0; // << reemplazar por la formula final
+  double result=0.0;// << reemplazar por la formula final
+  for(int i=0; i<n; ++i) {
+    result+=(pow(x[i]-average, 2))/n;
+  };
   return result;
 }
 

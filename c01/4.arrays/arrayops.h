@@ -5,7 +5,7 @@
 ///
 
 ///
-/// Constructores y destructores
+/// Constructores y destructores de arreglos
 ///
 
 /// crea un arreglo de numeros (enteros) inicializados en cero
@@ -49,7 +49,7 @@ int find_int(int k, int n, const int a[]);
 /// retorna la posicion del primer elemento igual a 's' en el arreglo 'a', o -1 si no encuentra
 /// k: numero a buscar
 /// n: tamano del arreglo
-/// a: arreglo de numeros
+/// a: arreglo de strings (cadenas de caracteres)
 int find_string(const char *s, int n, const char *const a[]);
 
 /// posicion del menor elemento (numero entero) en el rango [i, j) de 'a'

@@ -2,6 +2,7 @@
 /// Operaciones con arreglos (array operations)
 ///
 
+#include "arrayops.h"
 #include "stochastic.h"
 
 #include <math.h>
@@ -108,6 +109,7 @@ int find_min_int(int i, int j, const int a[]) {
 //  .........
 int find_min_double(int i, int j, const double a[]) {
   // analogo a find_min_int, mutatis mutandis
+  return -1;
 }
 
 // *** TAREA 2 pts ***
@@ -115,6 +117,7 @@ int find_min_double(int i, int j, const double a[]) {
 //  .........
 int find_min_string(int i, int j, const char *a[]) {
   // analogo a find_min_int, mutatis mutandis
+  return -1;
 }
 
 /// Operaciones para desordenar arreglos
