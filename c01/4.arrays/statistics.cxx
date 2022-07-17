@@ -38,20 +38,13 @@ static double varp_ecf(int n, const double x[]) {
   return result;
 }
 
-// *** TAREA 3 pts ***
-// Implementar el calculo de la varianza de la poblacion
-// Usando la formula estandar que define la varianza
-// suma [ i = 1 .. N, (x[i] - promedio(x))^2 ] / N
-//  .........
 /// computa la varianza de los valores en el arreglo x
 /// utiliza la formula estandar de la definicion de varianza
 /// n: tamano del arreglo
 /// x: arreglo de datos
 static double varp_sdf(int n, const double x[]) {
   double average = mean(n, x);
-  // calcular la suma de los cuadrados de las desviaciones y dividir por N
-  // result = sum [ i = 0 .. , (x[i] - average)^2 ] / N
-  double result=0.0;// << reemplazar por la formula final
+  double result=0.0;
   for(int i=0; i<n; ++i) {
     result+=(pow(x[i]-average, 2))/n;
   };

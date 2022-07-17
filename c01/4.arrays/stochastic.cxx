@@ -26,9 +26,6 @@ double uniform() {
   return seed;
 }
 
-// *** TAREA 2 pts ***
-// implementar este generador usando la formula indicada en el correo
-// ...
 /// genera un numero aleatorio de acuerdo a una distribucion normal estandar
 /// la distribucion normal estandar tiene promedio 0 y varianza 1
 double normal() {
