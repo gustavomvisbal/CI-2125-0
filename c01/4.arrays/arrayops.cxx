@@ -4,7 +4,8 @@
 
 #include "arrayops.h"
 #include "stochastic.h"
-
+#include "statistics.h"
+#include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
 #include <string.h>
@@ -74,10 +75,15 @@ int find_int(int k, int n, const int a[]) {
 }
 
 // *** TAREA 2 pts ***
-// implementar la funcion (ver encabezado)
-//  .........
+// Encuentra el string s en una cadena de caracteres
 int find_string(const char *s, int n, const char *a[]) {
   int result = -1;
+  for (int i = 0; i < n; ++i) {
+    if (strcmp(a[i], s)==0) {
+      result = i;
+      break;
+      }
+    }
   // analogo a find_int, mutatis mutandis
   // completar el codigo, usando la funcion estandar strcmp para comparar strings
   // ya conocen strcmp, pero es buena costumbre ver documentacion en caso de dudas
@@ -95,43 +101,66 @@ int find_string(const char *s, int n, const char *a[]) {
 }
 
 // *** TAREA 3 pts ***
-// implementar la funcion (ver encabezado)
-//  .........
+//  Busca el valor mínimo de un int desde el índice i en un arreglo
+//  de j elementos
 int find_min_int(int i, int j, const int a[]) {
   int mindx = i;
   int min = a[mindx];
+  for (i; i<j; ++i) {
+    if (min>a[i]) {
+      mindx=i;
+      min=a[mindx];
+    }
+  }
   // buscar el indice del minimo verdadero ...
   return mindx;
 }
 
 // *** TAREA 2 pts ***
-// implementar la funcion (ver encabezado)
-//  .........
+//  Busca el valor mínimo de un double desde el índice i en un arreglo
+//  de j elementos
 int find_min_double(int i, int j, const double a[]) {
   // analogo a find_min_int, mutatis mutandis
-  return -1;
+  int mindx = i;
+  double min = a[mindx];
+  for (i; i<j; ++i) {
+    if (min>a[i]) {
+      mindx=i;
+      min=a[mindx];
+    }
+  }
+  return mindx;
 }
+
 
 // *** TAREA 2 pts ***
 // implementar la funcion (ver encabezado)
 //  .........
 int find_min_string(int i, int j, const char *a[]) {
   // analogo a find_min_int, mutatis mutandis
-  return -1;
+  int mindx = i;
+  const char *min = a[mindx];
+  for (i; i<j; ++i) {
+    if (strcmp(min, a[i])>0) {
+      mindx=i;
+      min=a[mindx];
+    }
+  }
+  return mindx;
 }
 
 /// Operaciones para desordenar arreglos
 
 // *** TAREA 2 pts ***
-// implementar la funcion
-//  .........
 /// intercambia dos elementos en un arreglo de enteros
 /// i: indice del primer elemento
 /// j: indice del segundo elemento
 /// data: arreglo de enteros
 /// precondicion: 'i' y 'j' deben ser indices validos en 'data'
 static void swap_int_elements(int i, int j, int data[]) {
-  // analogo a swap_double_elements (abajo), mutatis mutandis
+  int tmp = data[i];
+  data[i] = data[j];
+  data[j] = tmp;
 }
 
 /// intercambia dos elementos en un arreglo de numeros (doble precision)
@@ -159,15 +188,15 @@ static void swap_double_elements_desugared(int i, int j, double *data) {
 }
 
 // *** TAREA 2 pts ***
-// implementar la funcion
-//  .........
 /// intercambia dos elementos en un arreglo de "strings" (cadenas de caracteres)
 /// i: indice del primer elemento
 /// j: indice del segundo elemento
 /// data: arreglo de strings
 /// precondicion: 'i' y 'j' deben ser indices validos en 'data'
 static void swap_string_elements(int i, int j, const char *data[]) {
-  // analogo a swap_double_elements (abajo), mutatis mutandis
+  const char *tmp = data[i];
+  data[i] = data[j];
+  data[j] = tmp;
 }
 
 void shuffle_int_array(int n, int a[]) {
@@ -179,16 +208,21 @@ void shuffle_int_array(int n, int a[]) {
 
 // *** TAREA 2 pts ***
 // implementar la funcion
-//  .........
 void shuffle_double_array(int n, double a[]) {
-  // analogo a shuffle_int_array, mutatis mutandis
+  for (int i = 0; i < n; ++i) {
+    int j = random_int(i, n);
+    swap_double_elements(i, j, a);
+  }
 }
 
 // *** TAREA 2 pts ***
 // implementar la funcion
-//  .........
+//  Barajea los caracteres de un string
 void shuffle_string_array(int n, const char *a[]) {
-  // analogo a shuffle_int_array, mutatis mutandis
+  for (int i = 0; i < n; ++i) {
+    int j = random_int(i, n);
+    swap_string_elements(i, j, a);
+  }
 }
 
 /// Operaciones para ordenar arreglos
@@ -201,6 +235,12 @@ void selection_sort_int_array(int n, int a[]) {
   // para todo i entre 0 y n-1 (excluido)
   //   buscar la posicion (mindx) del minimo elemento entre i y n (excluido)
   //   intercambiar el elemento a[i] con a[mindx]
+  for (int i=0; i<n; ++i) {
+    int mindx= find_min_int(i, n, a);
+    int tmp=a[i];
+    a[i]=a[mindx];
+    a[mindx]=tmp;
+  }
 }
 
 // *** TAREA 2 pts ***
@@ -208,6 +248,12 @@ void selection_sort_int_array(int n, int a[]) {
 //  .........
 void selection_sort_double_array(int n, double a[]) {
   // analogo a selection_sort_int_array, mutatis mutandis
+  for (int i=0; i<n; ++i) {
+    int mindx= find_min_double(i, n, a);
+    double tmp=a[i];
+    a[i]=a[mindx];
+    a[mindx]=tmp;
+  }
 }
 
 // *** TAREA 2 pts ***
@@ -215,4 +261,10 @@ void selection_sort_double_array(int n, double a[]) {
 //  .........
 void selection_sort_string_array(int n, const char *a[]) {
   // analogo a selection_sort_int_array, mutatis mutandis
+  for (int i=0; i<n; ++i) {
+    int mindx= find_min_string(i, n, a);
+    const char *tmp=a[i];
+    a[i]=a[mindx];
+    a[mindx]=tmp;
+  }
 }

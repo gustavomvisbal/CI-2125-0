@@ -26,10 +26,6 @@ double uniform() {
   return seed;
 }
 
-int main() {
-  double l=normal();
-  fprintf(stdout,"%f", l);
-}
 // *** TAREA 2 pts ***
 // implementar este generador usando la formula indicada en el correo
 // ...
