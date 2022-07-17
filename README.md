@@ -11,3 +11,4 @@ Más allá de eso, todo se desarrolló sin problemas.
 ¡Muchas gracias por su enseñanza y dedicación!
 
 Es increíble el esfuerzo que usted y el profesor Jorge le ponen al curso. =D
+Es increíble el esfuerzo que usted y el profesor Jorge le ponen al curso. =D
