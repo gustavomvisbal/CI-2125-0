@@ -10,20 +10,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-///////////////////////////////////
-/// Seccion: arreglos dinamicos ///
-///////////////////////////////////
-
-
 ///
 /// show_dynarray: imprime un arreglo dinamico
 ///
 /// const Dynarray *dyna: apuntador a un arreglo dinamico
 ///
 static void show_dynarray(const Dynarray *dyna) {
-  // no podemos accesar directamente los campos de la estructura Dynarray ...
-  // ... y tampoco cambiarlos, ya que son partes privadas de la implementacion.
-  // pero podemos obtener sus valores usando las funciones de acceso
+
   size_t size = dyna_size(dyna);
   size_t capacity = dyna_capacity(dyna);
   const double *data = dyna_data(dyna);
@@ -33,7 +26,13 @@ static void show_dynarray(const Dynarray *dyna) {
   for (size_t i = 0; i < size; ++i) {
     fprintf(stdout, "  %6d: %12.6f\n", i, data[i]);
   }
-  fprintf(stdout, "]\n\n");
+  //El código de abajo intenta imprimir un sólo elemento en la posición i
+  //como la posición 801702 no está definida para nuestro apuntador, nos devuelve fuera de rango
+  //si usáramos notación data[] tendríamos un segmentation fault
+
+  /*size_t i = 801702; // https://www.youtube.com/watch?v=5aQ1wFt82k4
+  fprintf(stdout, "  %6d: %12.6f\n", i, dyna_val(i, dyna));
+  fprintf(stdout, "]\n\n");*/
 }
 
 int test_dynamic_arrays(int argc, const char *argv[]) {
@@ -56,5 +55,32 @@ int test_dynamic_arrays(int argc, const char *argv[]) {
 
   Dynarray *result = dyna_concatenate(x, y);
   show_dynarray(result);
+
+  //No crearé nuevos arrays, ya con x, y y result basta para hacer buenas pruebas =D
+  //Primero prbamos el sort
+  dyna_sort(result);
+  show_dynarray(result);
+  //Luego el insert y el remove
+  if (6<=argc)
+  {
+    dyna_insert(result, (int) argv[4], (int) argv[5], get_initializer("u"));
+    show_dynarray(result);
+    dyna_sort(result);
+    show_dynarray(result);
+    dyna_remove(result, (int) argv[4], (int) argv[5]);
+    show_dynarray(result);
+  }
+  //Prueba default de insert y remove
+  else {
+    dyna_insert(result, dyna_size(result), 4, get_initializer("f"));
+    show_dynarray(result);
+    dyna_sort(result);
+    show_dynarray(result);
+    dyna_remove(result, dyna_size(result)-4, 4);
+    show_dynarray(result);
+  }
+  
+  
+  
   return 0;    
 }

@@ -49,15 +49,38 @@ static int test_matrix_quick() {
   Matrix *mxz = matrix(8, 8, normal);
   show_matrix("mxz", mxz);
 
+  Matrix *zxm = matrix(8, 8, uniform);
+  show_matrix("zxm", zxm);
+
+  Matrix *sum = matrix_sum(mxz, zxm);
+  show_matrix("sum", sum);
+
+  Matrix *mult = matrix_mult(m42, zxm);
+  show_matrix("mult", mult);
+
+  Matrix *mult_sum = matrix_mult (sum, zxm);
+  show_matrix ("sum por uno de los sumandos", mult_sum);
+
+  Matrix *no_conmuta = matrix_mult(zxm, mxu);
+
+  Matrix *incons_sum = matrix_sum(zxm, m42);
+
   // "probar" (parcialmente) la liberacion de memoria
 
   matrix_destroy(&m42);
   matrix_destroy(&mxu);
   matrix_destroy(&mxz);
+  matrix_destroy(&zxm);
+  matrix_destroy(&sum);
+  matrix_destroy(&mult);
+  matrix_destroy(&mult_sum);
 
   assert(m42 == nullptr);
   assert(mxu == nullptr);
   assert(mxz == nullptr);
+  assert(zxm == nullptr);
+  assert(sum == nullptr);
+  assert(mult == nullptr);
 
   // ... mas pruebas, a su juicio
 
@@ -84,25 +107,36 @@ static int test_matrix_sum(int M, int N) {
 
   Matrix *bad = matrix(M, N+1, uniform);
   sum = matrix_sum(lhs, bad); // 
-  assert(sum == nullptr); // aqui de hecho *experamos* un error
-  // show_matrix("sum", sum); // ¿que pasa si tratan de ver la matriz?
-
-  // ... mas pruebas, a su juicio
-
+  assert(sum == nullptr); // Esto arroja error cuando sum está asignada de manera que evitemos salir de la memoria asignada tratando de usar la matriz sum
+  Matrix *bad_m = matrix(M+1, N, uniform);
+  show_matrix("bad_m", bad_m);
+  sum = matrix_sum(bad, bad_m);
+  assert(sum == nullptr);
+  Matrix *not_so_huge = matrix(2*M, 2*N, uniform);
+  Matrix *nsh_seq = matrix(2*M, 2*N, sequence);
+  sum = matrix_sum(not_so_huge, nsh_seq);
   return 0;
 }
 
 /// prueba la multiplicacion de matrices
 static int test_matrix_mult(int M, int N, int K) {
-  // ...
-  // como deben imaginarse, deben crear una matrix lhs (MxN) y una matriz rhs (NxK)
-  // y una matriz res (MxK) correspondiente a lhs * rhs (multiplicacion de matrices)
-  // https://en.wikipedia.org/wiki/Matrix_multiplication
-  // muestren las 3 matrices en pantalla
-  //
-  // repetir lo anterior unas tres veces
-  // consideren casos especiales que facilitan verificar el resultado
-  // ...
+  Initializer sequence = get_initializer("i");
+  Initializer uniform = get_initializer("u") ;
+  Initializer uniform_ints = get_initializer("z");
+  Initializer sequence_0_1 = get_initializer("f");
+
+  Matrix *lhs = matrix(M, N, sequence);
+  show_matrix("Matriz 1", lhs);
+  Matrix *rhs = matrix(N, K, uniform);
+  show_matrix("Matriz 2", rhs);
+  Matrix *bad_m= matrix(M+1, N, uniform_ints);
+  Matrix *not_so_huge= matrix(2*M, 2*N, sequence_0_1);
+  Matrix *nsh_rows= matrix(2*M, N, uniform);
+  Matrix *nsh_columns= matrix(M, 2*N, sequence);
+
+  Matrix *lhs_por_rhs = matrix_mult(lhs, rhs);
+  show_matrix("Producto de dos matrices multiplicables", lhs_por_rhs);
+  Matrix *conmut_nula = matrix_mult(rhs, lhs);
   return 0;
 }
 

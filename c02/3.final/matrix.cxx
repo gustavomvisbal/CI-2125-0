@@ -78,7 +78,27 @@ Matrix *matrix_sum(const Matrix *lhs, const Matrix *rhs) {
 }
 
 Matrix *matrix_mult(const Matrix *lhs, const Matrix *rhs) {
-  // ... implementar y ... quitar lo que sigue: ¡OBVIAMENTE!
-  fprintf(stderr, "operacion matrix_mult no implementada\n");
-  return nullptr;
+  size_t LNR = lhs->NR;
+  size_t LNC = lhs->NC;
+  size_t RNR = rhs->NR;
+  size_t RNC = rhs->NC;
+  // if LNR and RNC are not equal, it can't be executed
+  if (LNC != RNR) {
+    fprintf(stdout, "Error: El número de filas de la matriz 1 no es igual al número de columnas de la matriz 2: ");
+    fprintf(stdout, "%zu != %zu\n", LNC, RNR);
+    return nullptr;
+  }
+  Matrix *result = (Matrix *) malloc(sizeof(Matrix));
+  result->NR = RNC;
+  result->NC = LNR;
+  result->data = (double **) malloc(RNC * sizeof(double *));
+  for (size_t i = 0; i < RNC; ++i) {
+    result->data[i] = (double *) malloc(LNR * sizeof(double));
+    for (size_t j = 0; j < LNR; ++j) {
+      for (size_t k = 0; k<RNR; ++k) {
+        result->data[i][j] += lhs->data[j][k] * rhs->data[k][i];
+      }
+    }
+  }
+  return result; 
 }

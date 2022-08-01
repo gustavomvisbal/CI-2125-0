@@ -14,7 +14,8 @@
 // Pilas! Los horrores son senales para que Uds mejoren el programa
 // deberian tener por lo menos media docena de departamentos
 const char *dept[] = {
-  "Ingenieria de Computacion"
+  "Ingenieria de Computacion", "Ingeniería Electrónica", "Ingeniería Geofísica", "Ingeniería de Materiales",
+  "Ingeniería en Producción", "Ingeniería Mecánica", "Licenciatura en Física"
 };
 
 struct Student {

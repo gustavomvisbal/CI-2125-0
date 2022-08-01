@@ -35,7 +35,16 @@ void dyna_destroy(Dynarray **dynarray);
 /// funciones de acceso
 ///
 
+/// retorna el valor del i-esimo elemento del arreglo dinamico
+double dyna_val(size_t i, const Dynarray *dyna);
+
+/// asigna el i-esimo elemento del arreglo dinamico con el valor 'val'
+void dyna_assign(size_t i, Dynarray *dyna, double val);
+
 /// retorna la direccion de la data en memoria, pero no permite modificarla
+/// esta funcion puede ser eliminada de la interfaz de Dynarray
+/// desventaja: los clientes pueden salirse de rango y corromper la memoria
+/// ventajas: 1) mejor eficiencia 2) permite usar la notacion a[i] con el valor retornado
 const double *dyna_data(const Dynarray *dyna);
 
 /// retorna la cantidad de elementos en la data
@@ -57,7 +66,7 @@ size_t dyna_capacity(const Dynarray *dyna);
 /// Si la validacion falla, imprime un mensaje de error y retorna
 /// Los elementos son inicializados usando funcion 'init'
 /// Si 'init' es un apuntador nulo (nullptr) son inicializados en cero
-void dyna_insert(Dynarray *dyna, int pos, int N, Initializer init);
+Dynarray *dyna_insert(Dynarray *dyna, int pos, int N, Initializer init);
 /// Lo anterior es todo lo necesario para especificar la funcion
 /// Estamos implementando arreglos dinamicos (duh!) por lo tanto:
 /// Si el arreglo no tiene capacidad para agregar N elementos ...
@@ -92,7 +101,7 @@ void dyna_sort(Dynarray *dyna);
 ///
 /// concatenate
 ///
-/// crea un arreglo dinamico que corresponde a la concatenacion de dos arreglos
+/// crea un arreglo dinamico correspondiente a la concatenacion de los argumentos
 Dynarray *dyna_concatenate(const Dynarray *dyna1, const Dynarray *dyna2);
 
 #endif
