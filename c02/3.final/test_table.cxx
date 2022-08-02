@@ -14,8 +14,8 @@
 // Pilas! Los horrores son senales para que Uds mejoren el programa
 // deberian tener por lo menos media docena de departamentos
 const char *dept[] = {
-  "Ingenieria de Computacion", "Ingeniería Electrónica", "Ingeniería Geofísica", "Ingeniería de Materiales",
-  "Ingeniería en Producción", "Ingeniería Mecánica", "Licenciatura en Física"
+  "Ingenieria de Computacion", "Ingeniería en Electrónica", "Ingeniería en Geofísica", "Ingeniería de Materiales",
+  "Ingeniería en Producción", "Ingeniería en Mecánica", "Licenciatura en Física"
 };
 
 struct Student {
@@ -57,7 +57,7 @@ static int generate_file(int N, const char *filename) {
   FILE *file = fopen(filename, "w");
   for (int i = 0; i < N; ++i) {
     Student *s = random_student();
-    fscanf(file, "%s, %d, %s, %s, %4.2f\n", s->sid, s->cohort, s->name, s->dept, s->gpa);
+    fprintf(file, "%s, %d, %s, %s, %4.2f\n", s->sid, s->cohort, s->name, s->dept, s->gpa);
     free(s); 
   }
   fclose(file);
@@ -89,13 +89,21 @@ static void add_student(Student *s) {
 
 static int load_file(const char *filename) {
   FILE *file = fopen(filename, "r");
-  for (int i = 0; i<5; ++i) {
-    char buffer[60];
-    int d;
-    fscanf(file, "%s ", buffer);
+  for (int i = 0; i<CAPACITY; ++i) {
     Student *s = (Student *) malloc(sizeof(Student));
+    char sid[16], f[12], m[4], l[12], t[16], c[3], r[16], dept[128], cohort[6], gpa[5], name[64];
+    fscanf(file, "%s %s %s %s %s %s %s %s %s", sid, cohort, f, m, l, t, c, r, gpa);
+    if (feof(file)) {
+      break;
+    }
+    snprintf(name, 64, "%s %s %s", f, m, l);
+    snprintf(dept, 128, "%s %s %s", t, c, r);
+    s->sid = strdup(sid);
+    s->name = strdup(name);
+    s->dept = strdup(dept);
+    s->gpa =  strtod(strdup(gpa), NULL);
     add_student(s);
-    fprintf(stdout, "%s", buffer);
+    fprintf(stdout, "%s %s %s %f \n", s->sid, s->name, s->dept, s->gpa);
     free(s);
   }
   fclose(file);

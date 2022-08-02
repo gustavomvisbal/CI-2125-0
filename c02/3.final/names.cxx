@@ -29,7 +29,7 @@ const char *first[] = {
   "Ignacio",
   "Isabel",
   "Jorge",
-  "Julia"
+  "Julia",
   "Kevin",
   "Kimberly",
   "Laura",

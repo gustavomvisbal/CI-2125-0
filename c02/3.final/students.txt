@@ -1,32 +1,32 @@
-03-012181, 2003, Benjamin N. Xanthopoulos, Ingeniería Electrónica, 4.90
+03-012181, 2003, Benjamin N. Xanthopoulos, Ingeniería en Electrónica, 4.90
 08-005630, 2008, Beatriz V. Acevedo, Ingeniería de Materiales, 4.89
 00-006134, 2000, Yuri W. Benavides, Licenciatura en Física, 3.97
-08-002538, 2008, Antonio X. Zambrano, Ingeniería Geofísica, 4.76
+08-002538, 2008, Antonio X. Zambrano, Ingeniería en Geofísica, 4.76
 11-031258, 2011, Gustavo I. Quintana, Ingeniería en Producción, 4.44
-18-030726, 2018, JuliaKevin M. Sandoval, Ingeniería Geofísica, 4.29
+18-030726, 2018, Julia M. Sandoval, Ingeniería en Geofísica, 4.29
 02-032517, 2002, Xeneida K. Perez, Licenciatura en Física, 4.69
-09-009606, 2009, JuliaKevin C. Iglesias, Ingeniería Mecánica, 3.57
-14-013022, 2014, Yanet V. Diaz, Ingeniería Mecánica, 4.13
+09-009606, 2009, Kevin C. Iglesias, Ingeniería en Mecánica, 3.57
+14-013022, 2014, Yanet V. Diaz, Ingeniería en Mecánica, 4.13
 07-025845, 2007, Ricardo E. Linares, Ingeniería en Producción, 3.24
-20-011459, 2020, Zacarias P. Acevedo, Ingeniería Electrónica, 3.14
-04-027411, 2004, Benjamin V. Xanthopoulos, Ingeniería Geofísica, 4.51
-12-020697, 2012, Olga H. Urbano, Ingeniería Mecánica, 3.85
+20-011459, 2020, Zacarias P. Acevedo, Ingeniería en Electrónica, 3.14
+04-027411, 2004, Benjamin V. Xanthopoulos, Ingeniería en Geofísica, 4.51
+12-020697, 2012, Nina H. Urbano, Ingeniería en Mecánica, 3.85
 10-014238, 2010, Pedro O. Escalante, Licenciatura en Física, 3.87
-06-032579, 2006, Susana X. Cardenas, Ingeniería Mecánica, 4.76
+06-032579, 2006, Susana X. Cardenas, Ingeniería en Mecánica, 4.76
 09-010368, 2009, Yuri H. Jimenez, Licenciatura en Física, 4.88
-00-016813, 2000, Gabriela W. Ramirez, Ingeniería Geofísica, 4.15
-15-031436, 2015, Ulises F. Navarro, Ingenieria de Computacion, 4.86
-13-019304, 2013, Victor B. Quintana, Ingeniería Electrónica, 3.49
-10-019334, 2010, Raquel Z. Navarro, Ingeniería Electrónica, 4.52
+00-016813, 2000, Gabriela W. Ramirez, Ingeniería en Geofísica, 4.15
+15-031436, 2015, Tobias F. Navarro, Ingenieria de Computacion, 4.86
+13-019304, 2013, Victor B. Quintana, Ingeniería en Electrónica, 3.49
+10-019334, 2010, Raquel Z. Navarro, Ingeniería en Electrónica, 4.52
 12-026963, 2012, Xavier R. Benavides, Ingeniería en Producción, 3.78
-11-024343, 2011, Ulises O. Zambrano, Ingeniería Mecánica, 3.33
-03-028247, 2003, Zena T. Tejada, Ingeniería Mecánica, 3.27
-09-012428, 2009, Laura C. Kimura, Ingeniería Mecánica, 3.20
+11-024343, 2011, Ulises O. Zambrano, Ingeniería en Mecánica, 3.33
+03-028247, 2003, Zena T. Tejada, Ingeniería en Mecánica, 3.27
+09-012428, 2009, Kimberly C. Kimura, Ingeniería en Mecánica, 3.20
 13-018063, 2013, Beatriz F. Velasquez, Ingeniería de Materiales, 3.37
 01-017873, 2001, Daniela B. Velasquez, Ingeniería en Producción, 3.76
-16-022349, 2016, Marco J. Machado, Ingenieria de Computacion, 4.69
-19-026540, 2019, JuliaKevin Q. Diaz, Ingeniería Mecánica, 3.51
-16-005914, 2016, Uma K. Forlan, Ingeniería Electrónica, 4.44
+16-022349, 2016, Luis J. Machado, Ingenieria de Computacion, 4.69
+19-026540, 2019, Julia Q. Diaz, Ingeniería en Mecánica, 3.51
+16-005914, 2016, Uma K. Forlan, Ingeniería en Electrónica, 4.44
 10-025756, 2010, Victor V. Sandoval, Licenciatura en Física, 4.39
 15-016004, 2015, Carlos U. Velasquez, Ingeniería en Producción, 3.77
-12-028587, 2012, Gustavo E. Iglesias, Ingeniería Electrónica, 4.47
+12-028587, 2012, Heidy E. Iglesias, Ingeniería en Electrónica, 4.47
