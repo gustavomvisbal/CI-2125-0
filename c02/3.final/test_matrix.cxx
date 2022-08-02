@@ -16,9 +16,7 @@
 /// const char *name: nombre o etiqueta para identificar la matriz
 /// const Matrix *: apuntador a la matriz
 static void show_matrix(const char *name, const Matrix *matrix) {
-  // no podemos acceder directamente a los campos de la estructura Matrix ...
-  // ... y tampoco cambiarlos, ya que son partes privadas de la implementacion.
-  // pero podemos obtener sus valores usando las funciones de acceso
+  
   size_t NR = matrix_nr(matrix);
   size_t NC = matrix_nc(matrix);
   const double **data = matrix_data(matrix);
@@ -58,6 +56,8 @@ static int test_matrix_quick() {
   Matrix *mult = matrix_mult(m42, zxm);
   show_matrix("mult", mult);
 
+  //Es posible realizar una operación sobre el resultado de otra siempre y cuando se cumplan ue después de realizar la primera
+  //operació, se cumplan las condiciones para realizar la segunda
   Matrix *mult_sum = matrix_mult (sum, zxm);
   show_matrix ("sum por uno de los sumandos", mult_sum);
 
@@ -115,6 +115,9 @@ static int test_matrix_sum(int M, int N) {
   Matrix *not_so_huge = matrix(2*M, 2*N, uniform);
   Matrix *nsh_seq = matrix(2*M, 2*N, sequence);
   sum = matrix_sum(not_so_huge, nsh_seq);
+  show_matrix ( "sum_a_bit_bigger", sum);
+  matrix_destroy(&sum);
+
   return 0;
 }
 
@@ -122,21 +125,19 @@ static int test_matrix_sum(int M, int N) {
 static int test_matrix_mult(int M, int N, int K) {
   Initializer sequence = get_initializer("i");
   Initializer uniform = get_initializer("u") ;
-  Initializer uniform_ints = get_initializer("z");
-  Initializer sequence_0_1 = get_initializer("f");
 
   Matrix *lhs = matrix(M, N, sequence);
   show_matrix("Matriz 1", lhs);
   Matrix *rhs = matrix(N, K, uniform);
   show_matrix("Matriz 2", rhs);
-  Matrix *bad_m= matrix(M+1, N, uniform_ints);
-  Matrix *not_so_huge= matrix(2*M, 2*N, sequence_0_1);
-  Matrix *nsh_rows= matrix(2*M, N, uniform);
-  Matrix *nsh_columns= matrix(M, 2*N, sequence);
+
 
   Matrix *lhs_por_rhs = matrix_mult(lhs, rhs);
   show_matrix("Producto de dos matrices multiplicables", lhs_por_rhs);
   Matrix *conmut_nula = matrix_mult(rhs, lhs);
+  assert(conmut_nula!=nullptr);
+  show_matrix("conmut_nula", conmut_nula);
+  
   return 0;
 }
 

@@ -34,6 +34,7 @@ static Student *random_student() {
   const int delta = 654321 / (recent - oldest);
   const int cohort = random_int(oldest, recent + 1);
   const int number = random_int(1, delta);
+  const int random_num = random_int(0, 7);
   const int NB = 16; // buffer size
   const double gpa = random_int(310, 495)/100.0;
   // usando la tecnica del snprintf otra vez (vean names.cxx)
@@ -46,7 +47,7 @@ static Student *random_student() {
   student->sid = sid;
   student->cohort = cohort;
   student->name = random_name();
-  student->dept = dept[0]; // horror: todos lo estudiantes estan en el mismo departamento!
+  student->dept = dept[random_num];
   student->gpa = gpa;
   return student;
 }
@@ -56,8 +57,7 @@ static int generate_file(int N, const char *filename) {
   FILE *file = fopen(filename, "w");
   for (int i = 0; i < N; ++i) {
     Student *s = random_student();
-    // horror: no estamos incluyendo todos los datos del estudiante!
-    fprintf(file, "%s, %s, %4.2f\n", s->sid, s->name, s->gpa);
+    fscanf(file, "%s, %d, %s, %s, %4.2f\n", s->sid, s->cohort, s->name, s->dept, s->gpa);
     free(s); 
   }
   fclose(file);
@@ -88,6 +88,17 @@ static void add_student(Student *s) {
 }
 
 static int load_file(const char *filename) {
+  FILE *file = fopen(filename, "r");
+  for (int i = 0; i<5; ++i) {
+    char buffer[60];
+    int d;
+    fscanf(file, "%s ", buffer);
+    Student *s = (Student *) malloc(sizeof(Student));
+    add_student(s);
+    fprintf(stdout, "%s", buffer);
+    free(s);
+  }
+  fclose(file);
   // horror, no nos dieron el codigo para leer el archivo!
   // deben abrir el archivo para leer, no escribir
   // deben usar fscanf en un lazo para leer un estudiante a la vez

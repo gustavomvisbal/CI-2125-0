@@ -78,9 +78,19 @@ int test_dynamic_arrays(int argc, const char *argv[]) {
     show_dynarray(result);
     dyna_remove(result, dyna_size(result)-4, 4);
     show_dynarray(result);
+    dyna_insert(result, dyna_size(result)/2, 4, get_initializer("z"));
+    show_dynarray(result);
+    dyna_sort(result);
+    show_dynarray(result);
+    dyna_remove(result, dyna_size(result), 4);
+    show_dynarray(result);
+    dyna_insert(result, dyna_size(result)+1, 4, get_initializer("f"));
+
   }
   
-  
-  
+  dyna_destroy(&result);
+  dyna_destroy(&x);
+  dyna_destroy(&y);
+
   return 0;    
 }
