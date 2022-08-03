@@ -102,3 +102,5 @@ Matrix *matrix_mult(const Matrix *lhs, const Matrix *rhs) {
   }
   return result; 
 }
+
+//h

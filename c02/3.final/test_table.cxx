@@ -79,6 +79,17 @@ static void add_student(Student *s) {
   }
 }
 
+void free_student(Student **s) {
+  free((void *)(*s)->sid);
+  (*s)->sid = nullptr;
+  free((void *)(*s)->name);
+  (*s)->name = nullptr;
+  free((void *)(*s)->dept);
+  (*s)->dept = nullptr;
+  free(*s);
+  *s = nullptr;
+}
+
 static int load_file(const char *filename) {
   FILE *file = fopen(filename, "r");
   for (int i = 0; i<CAPACITY; ++i) {
@@ -117,8 +128,6 @@ static int load_file(const char *filename) {
     s->dept = strdup(dept);
     s->gpa =  strtod(strdup(gpa), NULL);
     add_student(s);
-    fprintf(stdout, "%s, %d, %s, %s, %f \n", s->sid, s->cohort, s->name, s->dept, s->gpa);
-    free(s);
   }
   fclose(file);
   fprintf(stdout, "Cargamos %d estudiantes \n", NS);
@@ -167,7 +176,7 @@ static int save_file(int N, Student *s[], const char *filename) {
 static int sort_file(const char *filename) {
   load_file(filename);
   sort(NS, student); // <<< ven la maravilla, solo usamos los primeros NS elementos
-  /*save_file(NS, student, filename);*/
+  save_file(NS, student, filename);
 }
 
 int test_table(int argc, const char *argv[]) {
