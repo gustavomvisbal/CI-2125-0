@@ -122,17 +122,19 @@ static int load_file(const char *filename) {
   }
   fclose(file);
   fprintf(stdout, "Cargamos %d estudiantes \n", NS);
-  return 0;
+  return NS;
 }
 
-int find_min_student(int i, int j, Student *s[]) {
+int find_min_student(int i, int N, Student *s[]) {
   int mindx = i;
-  Student *min = s[mindx];
-  for (i; i<j; ++i) {
-    if (strcmp((const char *) min->sid, (const char *) s[i]->sid)>0) {
+  for (i; i<N; ++i) {
+    Student *min = (Student *) malloc(sizeof(Student));
+    min = s[mindx];
+    if (strcmp(min->sid, s[i]->sid)>0) {
       mindx=i;
       min=s[mindx];
     }
+    free(min);
   }
   return mindx;
 }
@@ -142,9 +144,11 @@ int find_min_student(int i, int j, Student *s[]) {
 static void sort(int N, Student *s[]) {
   for (int i=0; i<N; ++i) {
     int mindx= find_min_student(i, N, s);
-    Student *tmp=s[i];
+    Student *tmp = (Student *) malloc(sizeof(Student));
+    tmp=s[i];
     s[i]=s[mindx];
     s[mindx]=tmp;
+    free(tmp);
   }
 }
 
@@ -163,7 +167,7 @@ static int save_file(int N, Student *s[], const char *filename) {
 static int sort_file(const char *filename) {
   load_file(filename);
   sort(NS, student); // <<< ven la maravilla, solo usamos los primeros NS elementos
-  save_file(NS, student, filename);
+  /*save_file(NS, student, filename);*/
 }
 
 int test_table(int argc, const char *argv[]) {
