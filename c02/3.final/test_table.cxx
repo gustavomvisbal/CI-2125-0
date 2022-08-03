@@ -64,12 +64,7 @@ static int generate_file(int N, const char *filename) {
   return 0;
 }
 
-// Este es el arreglo de (apuntadores a) estudiantes en memoria
-// Esta definido con una maxima capacidad de 10000 estudiantes
-// Sin embargo solamente van a usar las primeras NS celdas
-// El valor de NS (numero de estudiantes) se computa al cargar archivos
-// La forma elegante de hacer esto es usar un arreglo dinamico
-// Lo definimos asi para hacerlo mas facil e independiente de dynarray
+
 static int NS = 0;
 static const int CAPACITY = 10000;
 static Student *student[CAPACITY];
@@ -79,9 +74,6 @@ static void add_student(Student *s) {
   if (NS < CAPACITY) {
     student[NS] = s;
     ++NS;
-    // por claridad incrementamos NS (muy importante no olvidarse) por separado
-    // tambien podriamos haber dicho students[NS++] = s;
-    // pero no students[++NS] = s; // preguntense porque
   } else {
     fprintf(stderr, "No se pudo agregar %s: no hay capacidad", s->sid);
   }
@@ -91,55 +83,78 @@ static int load_file(const char *filename) {
   FILE *file = fopen(filename, "r");
   for (int i = 0; i<CAPACITY; ++i) {
     Student *s = (Student *) malloc(sizeof(Student));
-    char sid[16], f[12], m[4], l[12], t[16], c[3], r[16], dept[128], cohort[6], gpa[5], name[64];
+    char sid[16], f[12], m[6], l[12], t[16], c[3], r[16], dept[128], cohort[6], gpa[5], name[64];
     fscanf(file, "%s %s %s %s %s %s %s %s %s", sid, cohort, f, m, l, t, c, r, gpa);
     if (feof(file)) {
       break;
+    }
+    for (int j = 0; j < sizeof(sid)/sizeof(sid[0]); ++j) {
+      if (sid[j] == ',' || sid[j] == ' ') {
+        sid[j] = '\0';
+      }
+    }
+    for (int k = 0; k < sizeof(cohort)/sizeof(cohort[0]); ++k) {
+      if (cohort[k] == ',') {
+        cohort[k] = '\0';
+      }
+    }
+    for (int q = 0; q < sizeof(l)/sizeof(l[0]); ++q) {
+      if (l[q] == ',') {
+        l[q] = '\0';
+      }
+    }
+    for (int q = 0; q < sizeof(r)/sizeof(r[0]); ++q) {
+      if (r[q] == ',') {
+        r[q] = '\0';
+      }
     }
     snprintf(name, 64, "%s %s %s", f, m, l);
     snprintf(dept, 128, "%s %s %s", t, c, r);
     s->sid = strdup(sid);
     s->name = strdup(name);
+    char *ptr;
+    s->cohort = (int) strtol(strdup(cohort), &ptr, 10);
     s->dept = strdup(dept);
     s->gpa =  strtod(strdup(gpa), NULL);
     add_student(s);
-    fprintf(stdout, "%s %s %s %f \n", s->sid, s->name, s->dept, s->gpa);
+    fprintf(stdout, "%s, %d, %s, %s, %f \n", s->sid, s->cohort, s->name, s->dept, s->gpa);
     free(s);
   }
   fclose(file);
-  // horror, no nos dieron el codigo para leer el archivo!
-  // deben abrir el archivo para leer, no escribir
-  // deben usar fscanf en un lazo para leer un estudiante a la vez
-  // usar malloc para crear un estudiante en memoria dinamica ...
-  // ... de manera parecida a lo hecho en random_student
-  // de hecho, van a notar una oportunidad de factorizar codigo comun
-  // usen add_student para agregar cada estudiante al arreglo
-  // esto garantiza que NS esta en sincronia
-  // por ultimo, recuerden usar fclose para cerrar el archivo
-  fprintf(stdout, "Cargamos %d estudiantes\n", NS);
+  fprintf(stdout, "Cargamos %d estudiantes \n", NS);
   return 0;
+}
+
+int find_min_student(int i, int j, Student *s[]) {
+  int mindx = i;
+  Student *min = s[mindx];
+  for (i; i<j; ++i) {
+    if (strcmp((const char *) min->sid, (const char *) s[i]->sid)>0) {
+      mindx=i;
+      min=s[mindx];
+    }
+  }
+  return mindx;
 }
 
 // ordena un arreglo de estudiantes ...
 // de hecho cualquier arreglo de apuntadores a estudiantes (convenzanse!)
 static void sort(int N, Student *s[]) {
-  // horror: no nos dijeron como ordenar!
-  // porque ya saben como hacerlo (duh!) es una adaptacion sencilla de la tarea anterior
-  // usar el algoritmo "selection sort" en el arreglo s, de 0 (incluido) a N (no incluido)
-  // (noten que, por generalidad, N es un parametro: la funcion sort no conoce el tamano de s)
-  // es siempre mejor escribir codigo asi que "cablear" la funcion usando NS y student
-  //
-  // la clave para ordenamiento es el sid (student id) que es un string
-  // y Uds ya saben usar strcmp para decidir la precedencia
-  // noten que solo tienen que intercambiar (swap) los apuntadores en el arreglo!
-  // es asi de facil: no se pongan a horungar los campos, solo necesitan comparar los sid
+  for (int i=0; i<N; ++i) {
+    int mindx= find_min_student(i, N, s);
+    Student *tmp=s[i];
+    s[i]=s[mindx];
+    s[mindx]=tmp;
+  }
 }
 
 // salvar los estudiantes en memoria, escribiendolos en un archivo
 static int save_file(int N, Student *s[], const char *filename) {
   FILE *file = fopen(filename, "w");
   for (int i = 0; i < N; ++i) {
-    // anadir el estudiante al archivo (ver generate_file, despues de mejorarlo)
+    Student *m = s[i];
+    fprintf(file, "%s, %d, %s, %s, %f\n", m->sid, m->cohort, m->name, m->dept, m->gpa);
+    free(s);
   }
   fclose(file);
   return 0;
