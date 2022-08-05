@@ -1,8 +1,0 @@
-p, 7348200, Julia M. Sandoval, Ingeniería en Geofísica, 4.290000
-09-009606, 2009, Kevin C. Iglesias, Ingeniería en Mecánica, 3.570000
-H$p, 7347408, Benjamin , Xanthopoulos,, Ingeniería en Electrónica, 4.900000
-Pp, 7347568, Beatriz V. Acevedo, Ingeniería de Materiales, 4.890000
-pp, 7348040, Gustavo I. Quintana, Ingeniería en Producción, 4.440000
-�p, 7340224, Xeneida K. Perez, Licenciatura en Física, 4.690000
-�Op, 7347720, Yuri W. Benavides, Licenciatura en Física, 3.970000
-�p, 7347880, Antonio X. Zambrano, Ingeniería en Geofísica, 4.760000
