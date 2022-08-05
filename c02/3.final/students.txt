@@ -1,4 +1,4 @@
-õ, 10177000, Antonio X. Zambrano, Ingenier√≠a en Geof√≠sica, 4.760000
+˘, 16337384, Antonio X. Zambrano, Ingenier√≠a en Geof√≠sica, 4.760000
 00-016813, 2000, Gabriela W. Ramirez, Ingenier√≠a en Geof√≠sica, 4.150000
 01-017873, 2001, Daniela B. Velasquez, Ingenier√≠a en Producci√≥n, 3.760000
 02-032517, 2002, Xeneida K. Perez, Licenciatura en F√≠sica, 4.690000
@@ -25,8 +25,8 @@
 16-022349, 2016, Luis J. Machado, Ingenieria de Computacion, 4.690000
 19-026540, 2019, Julia Q. Diaz, Ingenier√≠a en Mec√°nica, 3.510000
 20-011459, 2020, Zacarias P. Acevedo, Ingenier√≠a en Electr√≥nica, 3.140000
-P"õ, 10176736, Beatriz V. Acevedo, Ingenier√≠a de Materiales, 4.890000
-`Iõ, 10158272, Julia M. Sandoval, Ingenier√≠a en Geof√≠sica, 4.290000
-x◊õ, 10159376, Benjamin , Xanthopoulos,, Ingenier√≠a en Electr√≥nica, 4.900000
-®Hõ, 10176864, Yuri W. Benavides, Licenciatura en F√≠sica, 3.970000
-‡Hõ, 10166392, Gustavo I. Quintana, Ingenier√≠a en Producci√≥n, 4.440000
+P"˘, 16337120, Beatriz V. Acevedo, Ingenier√≠a de Materiales, 4.890000
+`I˘, 16318656, Julia M. Sandoval, Ingenier√≠a en Geof√≠sica, 4.290000
+pœ˘, 16319760, Benjamin , Xanthopoulos,, Ingenier√≠a en Electr√≥nica, 4.900000
+®H˘, 16337248, Yuri W. Benavides, Licenciatura en F√≠sica, 3.970000
+‡H˘, 16326776, Gustavo I. Quintana, Ingenier√≠a en Producci√≥n, 4.440000

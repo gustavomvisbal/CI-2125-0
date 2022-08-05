@@ -89,14 +89,14 @@ Matrix *matrix_mult(const Matrix *lhs, const Matrix *rhs) {
     return nullptr;
   }
   Matrix *result = (Matrix *) malloc(sizeof(Matrix));
-  result->NR = RNC;
-  result->NC = LNR;
+  result->NR = LNR;
+  result->NC = RNC;
   result->data = (double **) malloc(RNC * sizeof(double *));
   for (size_t i = 0; i < RNC; ++i) {
     result->data[i] = (double *) malloc(LNR * sizeof(double));
     for (size_t j = 0; j < LNR; ++j) {
       for (size_t k = 0; k<RNR; ++k) {
-        result->data[i][j] += lhs->data[j][k] * rhs->data[k][i];
+        result->data[j][i] += lhs->data[j][k] * rhs->data[k][i];
       }
     }
   }
