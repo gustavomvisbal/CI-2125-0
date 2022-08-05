@@ -1,32 +1,8 @@
-�, 10177000, Antonio X. Zambrano, Ingeniería en Geofísica, 4.760000
-00-016813, 2000, Gabriela W. Ramirez, Ingeniería en Geofísica, 4.150000
-01-017873, 2001, Daniela B. Velasquez, Ingeniería en Producción, 3.760000
-02-032517, 2002, Xeneida K. Perez, Licenciatura en Física, 4.690000
-03-028247, 2003, Zena T. Tejada, Ingeniería en Mecánica, 3.270000
-04-027411, 2004, Benjamin , Xanthopoulos,, Ingeniería en Geofísica, 4.510000
-06-032579, 2006, Susana X. Cardenas, Ingeniería en Mecánica, 4.760000
-07-025845, 2007, Ricardo E. Linares, Ingeniería en Producción, 3.240000
+p, 7348200, Julia M. Sandoval, Ingeniería en Geofísica, 4.290000
 09-009606, 2009, Kevin C. Iglesias, Ingeniería en Mecánica, 3.570000
-09-010368, 2009, Yuri H. Jimenez, Licenciatura en Física, 4.880000
-09-012428, 2009, Kimberly C. Kimura, Ingeniería en Mecánica, 3.200000
-10-014238, 2010, Pedro O. Escalante, Licenciatura en Física, 3.870000
-10-019334, 2010, Raquel Z. Navarro, Ingeniería en Electrónica, 4.520000
-10-025756, 2010, Victor V. Sandoval, Licenciatura en Física, 4.390000
-11-024343, 2011, Ulises O. Zambrano, Ingeniería en Mecánica, 3.330000
-12-020697, 2012, Nina H. Urbano, Ingeniería en Mecánica, 3.850000
-12-026963, 2012, Xavier R. Benavides, Ingeniería en Producción, 3.780000
-12-028587, 2012, Heidy E. Iglesias, Ingeniería en Electrónica, 4.470000
-13-018063, 2013, Beatriz F. Velasquez, Ingeniería de Materiales, 3.370000
-13-019304, 2013, Victor B. Quintana, Ingeniería en Electrónica, 3.490000
-14-013022, 2014, Yanet V. Diaz, Ingeniería en Mecánica, 4.130000
-15-016004, 2015, Carlos U. Velasquez, Ingeniería en Producción, 3.770000
-15-031436, 2015, Tobias F. Navarro, Ingenieria de Computacion, 4.860000
-16-005914, 2016, Uma K. Forlan, Ingeniería en Electrónica, 4.440000
-16-022349, 2016, Luis J. Machado, Ingenieria de Computacion, 4.690000
-19-026540, 2019, Julia Q. Diaz, Ingeniería en Mecánica, 3.510000
-20-011459, 2020, Zacarias P. Acevedo, Ingeniería en Electrónica, 3.140000
-P"�, 10176736, Beatriz V. Acevedo, Ingeniería de Materiales, 4.890000
-`I�, 10158272, Julia M. Sandoval, Ingeniería en Geofísica, 4.290000
-xכ, 10159376, Benjamin , Xanthopoulos,, Ingeniería en Electrónica, 4.900000
-�H�, 10176864, Yuri W. Benavides, Licenciatura en Física, 3.970000
-�H�, 10166392, Gustavo I. Quintana, Ingeniería en Producción, 4.440000
+H$p, 7347408, Benjamin , Xanthopoulos,, Ingeniería en Electrónica, 4.900000
+Pp, 7347568, Beatriz V. Acevedo, Ingeniería de Materiales, 4.890000
+pp, 7348040, Gustavo I. Quintana, Ingeniería en Producción, 4.440000
+�p, 7340224, Xeneida K. Perez, Licenciatura en Física, 4.690000
+�Op, 7347720, Yuri W. Benavides, Licenciatura en Física, 3.970000
+�p, 7347880, Antonio X. Zambrano, Ingeniería en Geofísica, 4.760000

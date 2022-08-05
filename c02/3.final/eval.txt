@@ -1,0 +1,15 @@
+dyna
+====
+- segmentation faults galore!
+
+matrix
+======
+matrix_mult:
+- WRONG: you invented a new multiplication
+
+table
+=====
+- everything seems to work, except
+
+sort_file:
+- BROKEN: TBD

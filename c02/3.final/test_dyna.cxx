@@ -35,7 +35,73 @@ static void show_dynarray(const Dynarray *dyna) {
   fprintf(stdout, "]\n\n");*/
 }
 
+void next(const char *label, int L, int pos, int N) {
+  fprintf(stdout, "<<< %s L=%d pos=%d N=%d >>>\n", label, L, pos, N);
+}
+
+int test_insert_remove() {
+  Initializer index = get_initializer("i");
+  Initializer fancy = get_initializer("f");
+  // array length
+  for (int L = 0; L < 4; ++L) {
+    // allocate
+    Dynarray *dyna = dynarray(L, index);
+    // number of elements to insert
+    for (int N = 1; N < 3; ++N) {
+      // insertion position
+      for (int i = 0; i <= L; ++i) {
+        next("initial", dyna_size(dyna), i, N);
+        show_dynarray(dyna);
+        next("insert", dyna_size(dyna), i, N);
+        dyna_insert(dyna, i, N, fancy);
+        show_dynarray(dyna);
+        next("remove", dyna_size(dyna), i, N);
+        dyna_remove(dyna, i, N);
+        show_dynarray(dyna);
+      }
+    }
+    // deallocate
+    dyna_destroy(&dyna);
+  }
+  return 0;
+}
+
+int test_sort() {
+  Initializer normal = get_initializer("z");
+
+  for (int L = 0; L < 4; ++L) {
+    Dynarray *dyna = dynarray(L, normal);
+    next("initial", dyna_size(dyna), 0, 0);
+    show_dynarray(dyna);
+    next("sorted", dyna_size(dyna), 0, 0);
+    dyna_sort(dyna);
+    show_dynarray(dyna);
+    dyna_destroy(&dyna);
+  }
+
+  for (int L = 16; L <= 128; L *= 2) {
+    Dynarray *dyna = dynarray(L, normal);
+    next("initial", dyna_size(dyna), 0, 0);
+    show_dynarray(dyna);
+    next("sorted", dyna_size(dyna), 0, 0);
+    dyna_sort(dyna);
+    show_dynarray(dyna);
+    dyna_destroy(&dyna);
+  }
+}
+
+int test_dynamic_arrays_alt(int argc, const char *argv[]) {
+  test_sort();
+  // test_insert_remove();
+}
+
+bool alternative = true;
+
 int test_dynamic_arrays(int argc, const char *argv[]) {
+  if (alternative) {
+    test_dynamic_arrays_alt(argc, argv);
+    return 0;
+  }
   // si argc es mayor o igual a 3, usar el parametro provisto
   const size_t NX_DEFAULT = 8;
   const size_t NX = (3 <= argc ? atoi(argv[2]) : NX_DEFAULT);

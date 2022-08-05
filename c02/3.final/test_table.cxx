@@ -14,8 +14,13 @@
 // Pilas! Los horrores son senales para que Uds mejoren el programa
 // deberian tener por lo menos media docena de departamentos
 const char *dept[] = {
-  "Ingenieria de Computacion", "Ingeniería en Electrónica", "Ingeniería en Geofísica", "Ingeniería de Materiales",
-  "Ingeniería en Producción", "Ingeniería en Mecánica", "Licenciatura en Física"
+  "Ingenieria de Computacion",
+  "Ingeniería en Electrónica",
+  "Ingeniería en Geofísica",
+  "Ingeniería de Materiales",
+  "Ingeniería en Producción",
+  "Ingeniería en Mecánica",
+  "Licenciatura en Física"
 };
 
 struct Student {
@@ -58,6 +63,8 @@ static int generate_file(int N, const char *filename) {
   for (int i = 0; i < N; ++i) {
     Student *s = random_student();
     fprintf(file, "%s, %d, %s, %s, %4.2f\n", s->sid, s->cohort, s->name, s->dept, s->gpa);
+    // const char *format = "%12s, %8d, %32s, %36s, %6.2f\n";
+    // fprintf(stdout, format, s->sid, s->cohort, s->name, s->dept, s->gpa);
     free(s); 
   }
   fclose(file);
@@ -68,6 +75,16 @@ static int generate_file(int N, const char *filename) {
 static int NS = 0;
 static const int CAPACITY = 10000;
 static Student *student[CAPACITY];
+
+// show students' in memory database
+static void show_students_mdb() {
+  fprintf(stdout, "showing %d students:\n", NS);
+  for (int i = 0; i < NS; ++i) {
+    Student *s = student[i];
+    const char *format = "%12s, %8d, %32s, %36s, %6.2f\n";
+    fprintf(stdout, format, s->sid, s->cohort, s->name, s->dept, s->gpa);
+  }
+}
 
 // funcion privada: agrega un estudiante al arreglo, si hay espacio disponible
 static void add_student(Student *s) {
@@ -166,6 +183,8 @@ static int save_file(int N, Student *s[], const char *filename) {
   FILE *file = fopen(filename, "w");
   for (int i = 0; i < N; ++i) {
     Student *m = s[i];
+    // const char *format = "%12s, %8d, %32s, %36s, %6.2f\n";
+    // fprintf(file, format, m->sid, m->cohort, m->name, m->dept, m->gpa);
     fprintf(file, "%s, %d, %s, %s, %f\n", m->sid, m->cohort, m->name, m->dept, m->gpa);
     free(s);
   }
@@ -175,7 +194,9 @@ static int save_file(int N, Student *s[], const char *filename) {
 
 static int sort_file(const char *filename) {
   load_file(filename);
+  show_students_mdb();
   sort(NS, student); // <<< ven la maravilla, solo usamos los primeros NS elementos
+  show_students_mdb();
   save_file(NS, student, filename);
 }
 
@@ -198,6 +219,7 @@ int test_table(int argc, const char *argv[]) {
   if (strcmp(argv[2], "load") == 0) {
     const char *filename = (4 <= argc ? argv[3] : "students.txt");
     int status = load_file(filename);
+    show_students_mdb();
     return status;
   }
 
